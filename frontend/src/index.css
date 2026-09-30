@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --color-amp-50: #f6f8fb;
+  --color-amp-100: #e9edf4;
+  --color-amp-200: #d2dbe9;
+  --color-amp-300: #a8b8d0;
+  --color-amp-400: #7890b0;
+  --color-amp-500: #587294;
+  --color-amp-600: #465c7a;
+  --color-amp-700: #3b4d65;
+  --color-amp-800: #344252;
+  --color-amp-900: #12141a;
+  --color-amp-950: #0a0b10;
+  --color-accent: #5ca6e0;
+  --color-accent-dim: #3f7fb0;
+  --color-amber: #ffd166;
+  --color-danger: #e06c6c;
+  --color-ok: #6fd96f;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: #0a0b10;
+  color: #d8d8e2;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* subtle scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #2c2c38; border-radius: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* knob/fader drag */
+.drag-none { touch-action: none; }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 4px rgba(92,166,224,0.4); }
+  50% { box-shadow: 0 0 12px rgba(92,166,224,0.8); }
+}
+.led-on { animation: pulse-glow 1.2s ease-in-out infinite; }
+
+.fade-in { animation: fadeIn 0.25s ease-out; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in { animation: slideIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+
+/* knob/fader indicator inertia */
+.knob-idle { transition: transform 0.05s linear; }
+
+/* agent typing dots */
+.typing-dots { display: inline-flex; gap: 4px; align-items: center; }
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #6fd96f;
+  animation: typingBounce 1.2s ease-in-out infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}

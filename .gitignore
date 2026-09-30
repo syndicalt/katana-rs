@@ -1,0 +1,19 @@
+# --- Rust ---
+/target/
+**/target/
+
+# --- Node / frontend ---
+frontend/node_modules/
+frontend/dist/
+**/node_modules/
+**/dist/
+
+# --- Logs & caches ---
+*.log
+*.local
+.DS_Store
+
+# --- Editor ---
+.vscode/*
+!.vscode/extensions.json
+.idea
